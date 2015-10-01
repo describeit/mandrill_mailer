@@ -106,12 +106,11 @@
 # :important - whether or not this message is important, and should be delivered ahead of non-important messages
 
 # Required for hash.stringify_keys!
-require 'devise'
 require 'active_support/all'
 require 'mandrill_mailer/arg_formatter'
 
 module MandrillMailer
-  class CoreMailer < Devise::Mailer
+  class CoreMailer < ActionMailer::Base
     include ActionView::Helpers::NumberHelper
     include Devise::Controllers::UrlHelpers
 
