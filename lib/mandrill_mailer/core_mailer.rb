@@ -110,7 +110,10 @@ require 'active_support/all'
 require 'mandrill_mailer/arg_formatter'
 
 module MandrillMailer
-  class CoreMailer
+  class CoreMailer < Devise::Mailer
+    include ActionView::Helpers::NumberHelper
+    include Devise::Controllers::UrlHelpers
+
     class InvalidEmail < StandardError; end
     class InvalidMailerMethod < StandardError; end
     class InvalidInterceptorParams < StandardError; end
