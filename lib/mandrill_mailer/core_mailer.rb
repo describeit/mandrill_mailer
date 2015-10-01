@@ -113,6 +113,7 @@ module MandrillMailer
   class CoreMailer < ActionMailer::Base
     include ActionView::Helpers::NumberHelper
     include Devise::Controllers::UrlHelpers
+    include Devise::Mailers::Helpers
 
     class InvalidEmail < StandardError; end
     class InvalidMailerMethod < StandardError; end
