@@ -114,6 +114,7 @@ module MandrillMailer
     include ActionView::Helpers::NumberHelper
     include Devise::Controllers::UrlHelpers
     include Devise::Mailers::Helpers
+    include ActionDispatch::Routing::PolymorphicRoutes
 
     class InvalidEmail < StandardError; end
     class InvalidMailerMethod < StandardError; end
