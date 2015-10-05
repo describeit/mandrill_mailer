@@ -218,8 +218,8 @@ module MandrillMailer
     end
 
     # Public: Triggers the stored Mandrill params to be sent to the Mandrill api
-    def deliver
-      raise NotImplementedError.new("#{self.class.name}#deliver is not implemented.")
+    def deliver_now
+      raise NotImplementedError.new("#{self.class.name}#deliver_now is not implemented.")
     end
 
 
