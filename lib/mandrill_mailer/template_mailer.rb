@@ -121,6 +121,19 @@ module MandrillMailer
       mandrill_api.messages.send_template(template_name, template_content, message, async, ip_pool, send_at)
     end
 
+    def deliver_later
+      params = Hash.new
+      params[:type] = :template
+      params[:name] = template_name
+      params[:content] = template_content
+      params[:message] = message
+      params[:async] = async
+      params[:ip_pool] = ip_pool
+      params[:send_at] = send_at
+
+      MandrillMailerJob.perform_async(Marshal::dump(params))
+    end
+
     # Handle template mailer specifics before formating the given args
     def mandrill_mail_handler(args)
       # Mandrill requires template content to be there, set default value

@@ -222,6 +222,9 @@ module MandrillMailer
       raise NotImplementedError.new("#{self.class.name}#deliver_now is not implemented.")
     end
 
+    def deliver_later
+      raise NotImplementedError.new("#{self.class.name}#deliver_later is not implemented.")
+    end
 
     def mandrill_mail_handler(args)
       args

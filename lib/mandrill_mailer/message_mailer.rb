@@ -99,5 +99,16 @@ module MandrillMailer
     def deliver_now
       mandrill_api.messages.send(message, async, ip_pool, send_at)
     end
+
+    def deliver_later
+      params = Hash.new
+      params[:type] = :mailer
+      params[:message] = message
+      params[:async] = async
+      params[:ip_pool] = ip_pool
+      params[:send_at] = send_at
+
+      MandrillMailerJob.perform_async(Marshal::dump(params))
+    end
   end
 end
